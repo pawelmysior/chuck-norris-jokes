@@ -10,9 +10,17 @@
         }
     ],
     "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
     "autoload": {
         "psr-4": {
             "PawelMysior\\ChuckNorrisJokes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PawelMysior\\ChuckNorrisJokes\\Tests\\": "tests/"
         }
     }
 }
