@@ -1,0 +1,13 @@
+{
+    "name": "pawelmysior/chuck-norris-jokes",
+    "description": "Create random Chuck Norris jokes.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pawel Mysior",
+            "email": "pawelmysior@gmail.com"
+        }
+    ],
+    "require": {}
+}
