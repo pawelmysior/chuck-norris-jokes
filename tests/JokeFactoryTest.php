@@ -2,6 +2,10 @@
 
 namespace PawelMysior\ChuckNorrisJokes\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use PawelMysior\ChuckNorrisJokes\JokeFactory;
 
@@ -10,28 +14,21 @@ class JokeFactoryTest extends TestCase
     /** @test */
     public function it_returns_a_random_joke()
     {
-        $jokes = new JokeFactory([
-            'This is a joke',
-        ]);
+        $client = $this->getTestClient('{ "type": "success", "value": { "id": 201, "joke": "Chuck Norris was what Willis was talkin\' about.", "categories": [] } }');
+
+        $jokes = new JokeFactory($client);
 
         $joke = $jokes->getRandomJoke();
 
-        $this->assertSame('This is a joke', $joke);
+        $this->assertSame('Chuck Norris was what Willis was talkin\' about.', $joke);
     }
 
-    /** @test */
-    public function it_returns_a_predefined_joke()
+    protected function getTestClient(string $responseBody)
     {
-        $chuckNorrisJokes = [
-            'The First rule of Chuck Norris is: you do not talk about Chuck Norris.',
-            'Chuck Norris does not wear a condom. Because there is no such thing as protection from Chuck Norris.',
-            "Chuck Norris' tears cure cancer. Too bad he has never cried.",
-        ];
-
-        $jokes = new JokeFactory();
-
-        $joke = $jokes->getRandomJoke();
-
-        $this->assertContains($joke, $chuckNorrisJokes);
+        return new Client([
+            'handler' => HandlerStack::create(new MockHandler([
+                new Response(200, [], $responseBody),
+            ]))
+        ]);
     }
 }
