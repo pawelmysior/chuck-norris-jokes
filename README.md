@@ -1,5 +1,8 @@
 # Chuck Norris Jokes
 
+[![Build Status](https://travis-ci.org/pawelmysior/chuck-norris-jokes.svg?branch=master)](https://travis-ci.org/pawelmysior/chuck-norris-jokes)
+[![StyleCI](https://github.styleci.io/repos/178536075/shield?branch=master)](https://github.styleci.io/repos/178536075)
+
 Create chuck norris jokes in your next PHP project.
 
 ## Installation
