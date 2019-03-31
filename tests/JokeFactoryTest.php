@@ -3,10 +3,10 @@
 namespace PawelMysior\ChuckNorrisJokes\Tests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Handler\MockHandler;
 use PawelMysior\ChuckNorrisJokes\JokeFactory;
 
 class JokeFactoryTest extends TestCase
@@ -28,7 +28,7 @@ class JokeFactoryTest extends TestCase
         return new Client([
             'handler' => HandlerStack::create(new MockHandler([
                 new Response(200, [], $responseBody),
-            ]))
+            ])),
         ]);
     }
 }
